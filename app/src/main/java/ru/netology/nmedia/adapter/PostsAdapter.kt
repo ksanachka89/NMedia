@@ -2,36 +2,51 @@ package ru.netology.nmedia.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.PostListItemBinding
 import ru.netology.nmedia.dto.Post
-import ru.netology.nmedia.resFormat
+import ru.netology.nmedia.util.resFormat
 
-typealias onButtonClicked = (Post) -> Unit
-
-class PostsAdapter(
-    private val onLikeClicked: onButtonClicked,
-    private val onShareClicked: onButtonClicked
+internal class PostsAdapter(
+    private val interactionListener: PostInteractionListener
 ) : ListAdapter<Post, PostsAdapter.ViewHolder>(DiffCallBack) {
 
     class ViewHolder(
         private val binding: PostListItemBinding,
-        private val onLikeClicked: onButtonClicked,
-        private val onShareClicked: onButtonClicked
+        listener: PostInteractionListener
     ) :
         RecyclerView.ViewHolder(binding.root) {
 
         private lateinit var post: Post // приватное св-во, ктр когда-то будет инициализировано
+        private val popupMenu by lazy {
+            PopupMenu(itemView.context, binding.menu).apply {
+                inflate(R.menu.options_post)//будет раздуваться меню options_post
+                setOnMenuItemClickListener { menuItem ->//слушатель нажатия на меню
+                    when (menuItem.itemId) {
+                        R.id.remove -> {
+                            listener.onRemoveClicked(post)
+                            true
+                        }
+                        R.id.edit -> {
+                            listener.onEditClicked(post)
+                            true
+                        }
+                        else -> false
+                    }
+                }
+            }
+        }
 
         init {
             binding.likes.setOnClickListener {
-                onLikeClicked(post)
+                listener.onLikeClicked(post)
             }
             binding.shares.setOnClickListener {
-                onShareClicked(post)
+                listener.onShareClicked(post)
             }
         }
 
@@ -49,6 +64,8 @@ class PostsAdapter(
                 likes.setImageResource(
                     if (post.likedByMe) R.drawable.ic_liked_24 else R.drawable.ic_baseline_favorite_border_24
                 )
+
+                menu.setOnClickListener { popupMenu.show() }
             }
         }
     }
@@ -70,7 +87,7 @@ class PostsAdapter(
         val binding = PostListItemBinding.inflate(
             inflater, parent, false
         )
-        return ViewHolder(binding, onLikeClicked, onShareClicked)
+        return ViewHolder(binding, interactionListener)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
