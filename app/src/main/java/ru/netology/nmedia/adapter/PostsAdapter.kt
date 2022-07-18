@@ -3,6 +3,7 @@ package ru.netology.nmedia.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import androidx.annotation.DrawableRes
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -48,24 +49,20 @@ internal class PostsAdapter(
             binding.shares.setOnClickListener {
                 listener.onShareClicked(post)
             }
+            binding.menu.setOnClickListener { popupMenu.show() }
         }
 
         fun bind(post: Post) {
             this.post = post
             with(binding) {
-                amountOfLikes.text = resFormat(post.likes)
-                amountOfShares.text = resFormat(post.shares)
+                shares.text = resFormat(post.shares)
                 amountOfViews.text = resFormat(post.views)
+                likes.text = resFormat(post.likes)
 
                 author.text = post.author
                 published.text = post.published
                 content.text = post.content
-
-                likes.setImageResource(
-                    if (post.likedByMe) R.drawable.ic_liked_24 else R.drawable.ic_baseline_favorite_border_24
-                )
-
-                menu.setOnClickListener { popupMenu.show() }
+                likes.isChecked = post.likedByMe
             }
         }
     }
