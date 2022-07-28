@@ -15,7 +15,8 @@ class InMemoryPostRepository : PostRepository {
             content = "Привет, это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия — помочь встать на путь роста и начать цепочку перемен → http://netolo.gy/fyb",
             published = "21 мая в 18:36",
             likedByMe = false,
-            shared = false
+            shared = false,
+            video = "https://www.youtube.com/watch?v=pWbV8Vo8C0w"
         ),
         Post(
             nextId++,
@@ -46,7 +47,8 @@ class InMemoryPostRepository : PostRepository {
             content = "Мы верим, что мир состоит из талантливых и способных людей",
             published = "29 мая в 09:00",
             likedByMe = false,
-            shared = false
+            shared = false,
+            video = "https://www.youtube.com/watch?v=NIYY1ARrW7s"
         ),
         Post(
             nextId++, author = "Нетология. Университет интернет-профессий будущего",

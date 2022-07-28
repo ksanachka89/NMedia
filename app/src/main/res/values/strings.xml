@@ -5,6 +5,7 @@
     <string name="description_likes">Like</string>
     <string name="description_shares">Share</string>
     <string name="description_views">Views</string>
+    <string name="description_share_post">Share post</string>
     <string name="remove">Remove</string>
     <string name="post_text">Post text</string>
     <string name="save">Save</string>
@@ -12,4 +13,7 @@
     <string name="editImage">EditItem</string>
     <string name="edit_message">Edit message</string>
     <string name="cancelEditButton">CancelEditButton</string>
+    <string name="EmptyText">No text</string>
+    <string name="description_post_save">Save</string>
+    <string name="add_post">Add post</string>
 </resources>

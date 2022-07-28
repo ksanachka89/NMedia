@@ -6,6 +6,7 @@
     <string name="description_likes">Нравится</string>
     <string name="description_shares">Поделиться</string>
     <string name="description_views">Просмотры</string>
+    <string name="description_share_post">Поделиться</string>
     <string name="remove">Удалить</string>
     <string name="post_text">Текст поста</string>
     <string name="save">Сохранить</string>
@@ -13,4 +14,7 @@
     <string name="editImage">Изображение редактирования</string>
     <string name="edit_message">Редактирование</string>
     <string name="cancelEditButton">Кнопка отмены</string>
+    <string name="EmptyText">Нет текста</string>
+    <string name="description_post_save">Сохранить</string>
+    <string name="add_post">Добавить пост</string>
 </resources>

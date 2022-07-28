@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.annotation.DrawableRes
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -49,6 +50,11 @@ internal class PostsAdapter(
             binding.shares.setOnClickListener {
                 listener.onShareClicked(post)
             }
+
+            binding.videoBanner.setOnClickListener {
+                listener.onPlayVideoClicked(post)
+            }
+
             binding.menu.setOnClickListener { popupMenu.show() }
         }
 
@@ -63,6 +69,8 @@ internal class PostsAdapter(
                 published.text = post.published
                 content.text = post.content
                 likes.isChecked = post.likedByMe
+
+                videoGroup.isVisible = post.video != null // видима, если есть видео
             }
         }
     }
