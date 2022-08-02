@@ -17,6 +17,22 @@ internal class PostsAdapter(
     private val interactionListener: PostInteractionListener
 ) : ListAdapter<Post, PostsAdapter.ViewHolder>(DiffCallBack) {
 
+    override fun onCreateViewHolder(
+        parent: ViewGroup, viewType: Int
+    ): ViewHolder { // создаем View и оборачиваем во ViewHolder
+        val inflater =
+            LayoutInflater.from(parent.context) // создали inflater из родителя - ViewGroup
+        val binding = PostListItemBinding.inflate(
+            inflater, parent, false
+        )
+        return ViewHolder(binding, interactionListener)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val post = getItem(position) // вернет пост, ктр находится в этой позиции
+        holder.bind(post)
+    }
+
     class ViewHolder(
         private val binding: PostListItemBinding,
         listener: PostInteractionListener
@@ -82,21 +98,5 @@ internal class PostsAdapter(
         override fun areContentsTheSame(oldItem: Post, newItem: Post) =
             oldItem == newItem
 
-    }
-
-    override fun onCreateViewHolder(
-        parent: ViewGroup, viewType: Int
-    ): ViewHolder { // создаем View и оборачиваем во ViewHolder
-        val inflater =
-            LayoutInflater.from(parent.context) // создали inflater из родителя - ViewGroup
-        val binding = PostListItemBinding.inflate(
-            inflater, parent, false
-        )
-        return ViewHolder(binding, interactionListener)
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val post = getItem(position) // вернет пост, ктр находится в этой позиции
-        holder.bind(post)
     }
 }
