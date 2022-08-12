@@ -4,16 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+    tools:context=".ui.FeedFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/posts_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="170dp"
-        tools:listitem="@layout/post_list_item" />
+        tools:listitem="@layout/post" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
