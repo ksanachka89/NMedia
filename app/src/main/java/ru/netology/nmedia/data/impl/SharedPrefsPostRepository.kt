@@ -67,7 +67,7 @@ class SharedPrefsPostRepository(
     }
 
     override fun delete(postId: Long) {
-        data.value = posts.filter {
+        posts = posts.filter {
             it.id != postId // оставляем только те посты, ктр не хотим удалить
         }
     }
@@ -78,7 +78,7 @@ class SharedPrefsPostRepository(
     }
 
     private fun update(post: Post) {
-        data.value = posts.map {
+        posts = posts.map {
             if (it.id == post.id) post else it
         }
     }

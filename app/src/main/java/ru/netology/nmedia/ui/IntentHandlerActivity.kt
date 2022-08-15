@@ -1,16 +1,17 @@
-package ru.netology.nmedia.activity
+package ru.netology.nmedia.ui
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import ru.netology.nmedia.R
-import ru.netology.nmedia.databinding.ActivityShareBinding
+import ru.netology.nmedia.databinding.IntentHandlerActivityBinding
 
-class IntentHandlerActivity : AppCompatActivity(R.layout.activity_share){
+class IntentHandlerActivity : AppCompatActivity(R.layout.intent_handler_activity){
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityShareBinding.inflate(layoutInflater)
+        val binding = IntentHandlerActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val intent = intent ?: return

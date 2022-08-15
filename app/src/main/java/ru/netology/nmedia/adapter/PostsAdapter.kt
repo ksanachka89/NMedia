@@ -3,13 +3,12 @@ package ru.netology.nmedia.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import androidx.annotation.DrawableRes
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.R
-import ru.netology.nmedia.databinding.PostListItemBinding
+import ru.netology.nmedia.databinding.PostBinding
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.util.resFormat
 
@@ -22,7 +21,7 @@ internal class PostsAdapter(
     ): ViewHolder { // создаем View и оборачиваем во ViewHolder
         val inflater =
             LayoutInflater.from(parent.context) // создали inflater из родителя - ViewGroup
-        val binding = PostListItemBinding.inflate(
+        val binding = PostBinding.inflate(
             inflater, parent, false
         )
         return ViewHolder(binding, interactionListener)
@@ -34,12 +33,13 @@ internal class PostsAdapter(
     }
 
     class ViewHolder(
-        private val binding: PostListItemBinding,
+        private val binding: PostBinding,
         listener: PostInteractionListener
     ) :
         RecyclerView.ViewHolder(binding.root) {
 
         private lateinit var post: Post // приватное св-во, ктр когда-то будет инициализировано
+
         private val popupMenu by lazy {
             PopupMenu(itemView.context, binding.menu).apply {
                 inflate(R.menu.options_post)//будет раздуваться меню options_post
@@ -70,8 +70,24 @@ internal class PostsAdapter(
             binding.videoBanner.setOnClickListener {
                 listener.onPlayVideoClicked(post)
             }
+            binding.playVideoButton.setOnClickListener {
+                listener.onPlayVideoClicked(post)
+            }
 
             binding.menu.setOnClickListener { popupMenu.show() }
+
+            binding.content.setOnClickListener {
+                listener.onPostClicked(post)
+            }
+            binding.avatar.setOnClickListener {
+                listener.onPostClicked(post)
+            }
+            binding.author.setOnClickListener {
+                listener.onPostClicked(post)
+            }
+            binding.published.setOnClickListener {
+                listener.onPostClicked(post)
+            }
         }
 
         fun bind(post: Post) {
