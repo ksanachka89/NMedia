@@ -17,4 +17,8 @@
     <string name="EmptyText">Нет текста</string>
     <string name="description_post_save">Сохранить</string>
     <string name="add_post">Добавить пост</string>
+    <string name="notification_user_liked">Пользователь %1$s поставил лайк посту %2$s</string>
+    <string name="channel_remote_name">Уведомления с сервера</string>
+    <string name="channel_remote_description">Уведомления с удаленного сервера</string>
+    <string name="notification_user_new_post">Пользователь %1$s опубликовал новый пост</string>
 </resources>
