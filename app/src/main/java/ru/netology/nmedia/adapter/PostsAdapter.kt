@@ -113,6 +113,5 @@ internal class PostsAdapter(
 
         override fun areContentsTheSame(oldItem: Post, newItem: Post) =
             oldItem == newItem
-
     }
 }
